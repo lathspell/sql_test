@@ -1,0 +1,12 @@
+CSV has fields
+    name,foo
+Table has fields
+    nr,name
+
+Load with pgloader. 10000 line chunks with 4 parallel connections:
+    pgloader --summary --truncate --config big.conf 
+
+
+Note that with smalls files,  section_threads=1 is the fastest one.
+
+

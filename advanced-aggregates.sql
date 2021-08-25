@@ -6,19 +6,6 @@
 --
 -- Ideas from http://www.databasesoup.com/2015/04/expressions-vs-advanced-aggregates.html/
 
-/*
-  SELECT
-        device_id,
-        count(*)::INT as present,
-        (count(*) FILTER (WHERE valid))::INT as valid_count,
-        (mode() WITHIN GROUP (order by val))::INT as mode,
-        (percentile_disc(0.5) WITHIN GROUP (order by val))::INT
-           as median
-    FROM dataflow_0913
-    GROUP BY device_id
-    ORDER BY device_id;
-*/
-
 DROP TABLE IF EXISTS adv_agg;
 CREATE TABLE adv_agg (
     id serial   not null primary key,
@@ -60,8 +47,6 @@ ORDER BY
 ;
 
 CREATE EXTENSION IF NOT EXISTS pgtap;
-set search_path to public,test;
-
 SELECT plan(6);
 -- Table filled?
 SELECT is(count(*), 12::bigint) FROM adv_agg;

@@ -1,1 +1,0 @@
-SQL Tests, mostly PostgreSQL

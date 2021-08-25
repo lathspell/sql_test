@@ -1,0 +1,4 @@
+= Playing with SQL =
+
+Mostly PostgreSQL.
+
